@@ -1,8 +1,10 @@
 const date=function printDate(){
-    return "01/06/2022";
+    let a=new Date();
+    return a;
 }
 const month=function printMonth(){
-    return "June";
+    let b=new Date
+    return b.getMonth()+1;
 }
 const info=function getBatchInfo(){
     return "Radon,W3D3, the topic for today is Nodejs module system";
