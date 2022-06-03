@@ -18,6 +18,11 @@ router.get('/hello', function (req, res) {
     res.send('Hello there!')
 });
 
+router.get('/hello', function (req, res) {
+   
+    res.send('Hello there!')
+});
+
 router.get('/candidates', function(req, res){
     console.log('Query paramters for this request are '+JSON.stringify(req.query))
     let gender = req.query.gender
@@ -34,6 +39,72 @@ router.get('/candidates/:canidatesName', function(req, res){
     console.log('The request objects is '+ JSON.stringify(req.params))
     console.log('Candidates name is '+req.params.canidatesName)
     res.send('Done')
+});
+
+router.get('/sol1',function(req,res){
+    const arr=[1,2,3,5,6,7];
+    let sumofThisArrayElements=0;
+    for(let i in arr){
+        sumofThisArrayElements += arr[i];
+    }
+    const lastElemnts=arr.pop;
+    const sumOfNumberSeries=lastElemnts*(lastElemnts+1)/2;
+    const missingNumber=sumOfNumberSeries - sumofThisArrayElements;
+    res.send({data: missingNumber});
+})
+
+router.get ('/movies',function(req,res){
+  const movies=["3 idiots","Age of ultron","Batman begins","The usual sespects"];
+  res.send(movies);
+});
+
+router.get('/movies/:indexNumber',function(req,res){
+    const movies=["3 idiots","Age of ultron","Batman begins","The usual sespects"];
+    indexNumber=req.params.indexNumber;
+    if(indexNumber<=movies.length){
+        res.send(movies[indexNumber])
+    }else{
+        res.send("Please use a valid indexNumber");
+    }
+});
+
+router.get('/films',function(req,res){
+    const films=[{
+            "id":1,
+            "name":"3 idiots"
+        },{
+            "id":2,
+            "name":"Age of ultron"
+        },{
+            "id":3,
+            "name":"Batman begins"
+        },{
+            "id":4,
+            "name":"The usual sespects"
+        }];
+    res.send(films);
+});
+
+router.get('/films/:filmId',function(req,res){
+    const films=[{
+        "id":1,
+        "name":"3 idiots"
+    },{
+        "id":2,
+        "name":"Age of ultron"
+    },{
+        "id":3,
+        "name":"Batman begins"
+    },{
+        "id":4,
+        "name":"The usual sespects"
+    }];
+    filmId=req.params.filmId;
+if(filmId<=films.length){
+    res.send(films[filmId])
+}else{
+    res.send("Soory..Flim not present of this id");
+}
 })
 
 
