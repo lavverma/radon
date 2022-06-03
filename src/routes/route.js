@@ -47,11 +47,25 @@ router.get('/sol1',function(req,res){
     for(let i in arr){
         sumofThisArrayElements += arr[i];
     }
-    const lastElemnts=arr.pop;
+    const lastElemnts=arr.pop();
     const sumOfNumberSeries=lastElemnts*(lastElemnts+1)/2;
     const missingNumber=sumOfNumberSeries - sumofThisArrayElements;
     res.send({data: missingNumber});
-})
+});
+
+router.get('/sol2',function(req,res){
+    const arr=[33,34,35,37,38];
+    let sumofThisArrayElements=0;
+    const len=arr.length;
+    for(let i in arr){
+        sumofThisArrayElements +=arr[i];
+    }
+    const firstElement=arr[0];
+    const lastElement=arr.pop();
+    const sumOfConsecutiveElements=(len +1)*(firstElement + lastElement)/2;
+    const missingNumber=sumOfConsecutiveElements - sumofThisArrayElements;
+    res.send({data : missingNumber});
+});
 
 router.get ('/movies',function(req,res){
   const movies=["3 idiots","Age of ultron","Batman begins","The usual sespects"];
