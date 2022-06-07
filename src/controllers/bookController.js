@@ -19,17 +19,15 @@ const getBooksData= async function (req, res) {
 
     //  const key=req.query
     //  const getParticularBooks=await bookModel.find(key)
-    //  res.send({msg: getParticularBooks})
+    //  res.send({msg: getParticularBooks })
 
-    const getRupayBook=req.query.indianPrice
-    const getUsdBook=req.query.europePrice
-    let allBooksData=await bookModel.find({price:{indianPrice: getRupayBook,
-                                                 europePrice: getUsdBook}})
-         res.send({msg: allBooksData})                                       
+    const indianRupayBook=req.query.indianRupay
+    let getIndianRupayBook=await bookModel.find({"price.indianPrice": indianRupayBook})
+         res.send({msg: getIndianRupayBook})                                       
 
 
 
-    // let getRandomBooks=await bookModel.find({stockAvailable:true ,tootalPages:{$gt : 500} })
+    // let getRandomBooks=await bookModel.find({ $or :[{stockAvailable:true}  ,{tootalPages:{$gt : 500} }]})
     //   res.send({msg: getRandomBooks})
 
     
