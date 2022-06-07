@@ -13,17 +13,17 @@ const getBooksData= async function (req, res) {
     //    res.send({msg:bookList})
 
 
-    // const getBooksInYear=req.query.year
-    // let allBooksData=await bookModel.find({year: getBooksInYear})
-    // res.send({msg: allBooksData})
+    const getBooksInYear=req.query.year
+    let allBooksData=await bookModel.find({year: getBooksInYear})
+    res.send({msg: allBooksData})
 
     //  const key=req.query
     //  const getParticularBooks=await bookModel.find(key)
     //  res.send({msg: getParticularBooks })
 
-    const indianRupayBook=req.query.indianRupay
-    let getIndianRupayBook=await bookModel.find({"price.indianPrice": indianRupayBook})
-         res.send({msg: getIndianRupayBook})                                       
+    // const indianRupayBook=req.query.indianRupay
+    // let getIndianRupayBook=await bookModel.find({"price.indianPrice": indianRupayBook})
+    //      res.send({msg: getIndianRupayBook})                                       
 
 
 
