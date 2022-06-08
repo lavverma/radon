@@ -56,24 +56,13 @@ const authorName=async function(req,res){
 module.exports.authorName=authorName
 
 
-const bookByAuthorId1=async function(req,res){
-   let book=await (await bookModel.find({author_id:1}).select({name:1, _id:0})).map(obj=>obj.name)
-   res.send(book)
+const bookByAuthorId=async function(req,res){
+    let author=req.params.author_id
+   let book=await bookModel.find({author_id:author}).select({name:1, _id:0})
+   let books=book.map(obj=>obj.name)
+   res.send({msg:books})
 } 
-module.exports.bookByAuthorId1=bookByAuthorId1
-
-const bookByAuthorId2=async function(req,res){
-    let book=await (await bookModel.find({author_id:2}).select({name:1, _id:0})).map(obj=>obj.name)
-    res.send(book)
- } 
- module.exports.bookByAuthorId2=bookByAuthorId2
-
- const bookByAuthorId3=async function(req,res){
-    let book=await (await bookModel.find({author_id:3}).select({name:1, _id:0})).map(obj=>obj.name)
-    let books=[...new Set(book)]
-    res.send(books)
- } 
- module.exports.bookByAuthorId3=bookByAuthorId3
+module.exports.bookByAuthorId=bookByAuthorId
 
 
 const authorAndAge=async function(req,res){
