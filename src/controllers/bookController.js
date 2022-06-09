@@ -3,6 +3,12 @@ const bookModel= require("../models/bookModel")
 
 const createBook= async function (req, res) {
     let book = req.body
+    if(book.author){
+        if(authorModel.){}
+        res.send()
+    }else{
+        res.send({error:"this detail is required"})
+    }
     let bookCreated = await bookModel.create(book)
     res.send({data: bookCreated})
 }
