@@ -5,4 +5,4 @@ const publisherSchema=new mongoose.Schema({
     headQuarter: String
 },{timestamps: true})
 
-  module.exports= mongoose.model("newPublisher",publisherSchema)
+  module.exports= mongoose.model('newPublisher',publisherSchema)
