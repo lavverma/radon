@@ -46,6 +46,7 @@ const getUserData = async function (req, res) {
   let user = await userModel.findById(userId);
   if (!user)
     return res.send({ status: false, msg: "No such user exists" });
+  
 
   res.send({ status: true, data: user });
 };
