@@ -10,8 +10,8 @@ let tokenVerification = function (req, res, next) {
 
     let decodedToken = jwt.verify(token, "functionup-radon");//verfiying token
     if (!decodedToken)
-        return res.send({ status: false, msg: "token is invalid" });
-
+        return res.status(401).send({ status: false, msg: "token is invalid" });
+        
     next()
 }
 module.exports.tokenVerification = tokenVerification
@@ -26,7 +26,7 @@ let authoriseUser = function (req, res, next) {
     
     let userLoggedIn = decodedToken.userId;
     let userToBeModified = req.params.userId;
-    if (userLoggedIn != userToBeModified) return res.send({ status: false, msg: 'User logged is not allowed to modify in other user data' })
+    if (userLoggedIn != userToBeModified) return res.status(403).send({ status: false, msg: 'User logged is not allowed to modify in other user data' })
 
     next()
 }
